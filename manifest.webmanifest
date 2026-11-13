@@ -1,0 +1,17 @@
+{
+  "id": "./",
+  "name": "Lingo Atelier — 英語・韓国語学習",
+  "short_name": "Lingo Atelier",
+  "description": "英語の文法整理と韓国語の文法・短文読解を、毎日の学習習慣に。",
+  "lang": "ja",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f8fc",
+  "theme_color": "#6458e8",
+  "orientation": "any",
+  "icons": [
+    {"src": "./icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+    {"src": "./icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+  ]
+}
