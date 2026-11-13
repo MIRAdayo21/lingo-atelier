@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#6458e8" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Lingo Atelier" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+  <meta name="description" content="英語と韓国語を、続く習慣に。単語・ハングル・復習・クイズ・学習記録が使えるオフライン学習アプリ。" />
+  <title>Lingo Atelier — 毎日、少しずつ話せる自分へ</title>
+  <style>
+    :root { --bg:#f7f8fc; --white:#fff; --ink:#172039; --muted:#7d869b; --line:#e8eaf2; --primary:#6458e8; --primary-light:#efedff; --aqua:#b9f3e0; --aqua-deep:#167c63; --orange:#ffbf76; --radius:22px; --shadow:0 9px 34px rgba(26,37,78,.045); color-scheme:light; }
+    * {box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);font-family:Inter,"Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased} button,input,select{font:inherit} button{cursor:pointer} button:disabled{opacity:.45;cursor:not-allowed} a{text-decoration:none;color:inherit} button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #b4aefe;outline-offset:3px} .app{min-height:100vh;display:grid;grid-template-columns:252px minmax(0,1fr)}
+    .sidebar{padding:37px 19px 25px 26px;position:sticky;top:0;height:100vh;background:#fff;border-right:1px solid var(--line);display:flex;flex-direction:column;z-index:10}.brand{display:flex;align-items:center;gap:11px;font-size:21px;font-weight:830;letter-spacing:-.9px;padding:0 7px}.brandmark{display:grid;place-items:center;background:var(--primary);color:white;border-radius:13px;width:39px;height:39px;font-size:23px;transform:rotate(-7deg)} .brandmark span{transform:rotate(7deg)} .sidelabel{font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:#a9b0bf;font-weight:800;margin:52px 15px 18px}.nav{display:flex;flex-direction:column;gap:6px}.navbutton{border:0;background:transparent;border-radius:13px;display:flex;align-items:center;text-align:left;gap:14px;color:#677187;padding:15px 17px;font-size:13px;font-weight:700;transition:.2s}.navbutton:hover{background:#f7f7fd}.navbutton.active{background:var(--primary-light);color:var(--primary)}.navicon{width:19px;height:19px;display:grid;place-items:center;font-size:18px;font-weight:650}.sidebottom{margin-top:auto;padding:17px 16px;background:#f5f6fb;border-radius:17px}.sidebottom p{font-size:12px;line-height:1.7;margin:5px 0;color:#6d778b}.sidebottom b{font-size:13px}.sidebottom button{border:0;background:none;color:var(--primary);padding:7px 0 0;font-size:12px;font-weight:800}
+    .main{width:min(1260px,100%);padding:35px 48px 55px;margin:0 auto;min-width:0}.topline{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;gap:14px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1.8px;font-weight:850;color:var(--primary)}.welcome{font-size:12px;color:var(--muted);margin-top:7px}.topright{display:flex;align-items:center;gap:10px}.pill{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:12px 15px;border-radius:50px;font-size:12px;font-weight:800;white-space:nowrap}.dot{width:8px;height:8px;border-radius:50%;background:#32c69c}.avatar{width:39px;height:39px;border-radius:50%;display:grid;place-items:center;background:#e7e2fe;color:var(--primary);font-weight:850}
+    .hero{border-radius:27px;background:#252547;min-height:252px;color:white;padding:36px 39px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:26px}.hero:before{content:"";position:absolute;width:360px;height:360px;right:-75px;top:-126px;border:1px solid rgba(255,255,255,.1);border-radius:50%;box-shadow:0 0 0 58px rgba(255,255,255,.026),0 0 0 116px rgba(255,255,255,.026)}.hero:after{content:"";position:absolute;width:108px;height:108px;bottom:-62px;right:39%;border:1px solid rgba(255,255,255,.09);border-radius:50%}.hero-content{position:relative;z-index:1;max-width:580px}.hero-label{display:inline-flex;align-items:center;gap:8px;color:#c2bafb;font-size:11px;letter-spacing:1.3px;font-weight:800}.hero h1{font-size:clamp(24px,3vw,36px);line-height:1.43;letter-spacing:-1.4px;margin:13px 0 10px}.hero p{margin:0;color:#bdc2dc;font-size:13px;line-height:1.85}.hero-art{position:relative;z-index:1;flex:0 0 200px;height:165px;display:grid;place-items:center}.art-circle{position:absolute;width:176px;height:176px;border-radius:50%;background:#454276;display:grid;place-items:center;font-size:84px;transform:rotate(12deg)}.art-bubble{position:absolute;background:#c3f4df;color:#184d40;padding:10px 17px;font-size:14px;font-weight:850;border-radius:14px;top:0;right:0;transform:rotate(9deg);box-shadow:0 7px 25px #090a2038}.art-bubble2{background:#fff;color:#6458e8;top:auto;right:auto;bottom:0;left:0;transform:rotate(-8deg)}.btn{border:0;background:var(--primary);color:#fff;border-radius:12px;display:inline-flex;justify-content:center;align-items:center;gap:9px;font-weight:750;font-size:13px;padding:14px 18px;transition:transform .14s,filter .14s}.btn:hover{filter:brightness(1.06);transform:translateY(-1px)}.btn:active{transform:translateY(0)}.btn-hero{background:#c4f3e4;color:#1b584c;margin-top:24px}.btn-soft{background:var(--primary-light);color:var(--primary)}.btn-white{background:#fff;border:1px solid var(--line);color:#4d5870}.btn-ghost{background:transparent;color:var(--primary)}.btn-danger{background:#fff1f1;color:#d84e59}.small{padding:10px 13px;font-size:12px}.full{width:100%}.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:31px 0 16px}.section-head h2{font-size:17px;letter-spacing:-.4px;margin:0}.section-head p{color:var(--muted);font-size:12px;margin:5px 0 0}.textlink{border:0;color:var(--primary);font-size:12px;font-weight:800;background:transparent;padding:8px 0}.grid-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:19px}.stat-card,.panel,.deck-card{background:#fff;border:1px solid #f0f1f5;border-radius:19px;box-shadow:var(--shadow)}.stat-card{padding:20px 22px;min-height:114px}.stat-label{font-size:12px;color:#8a91a3;font-weight:650;display:flex;align-items:center;justify-content:space-between}.stat-icon{background:#f1efff;color:var(--primary);width:31px;height:31px;border-radius:10px;display:grid;place-items:center;font-size:17px}.stat-value{font-size:31px;font-weight:850;letter-spacing:-1.2px;margin-top:12px}.stat-value span{font-size:12px;color:#8a91a3;letter-spacing:0;font-weight:600;margin-left:5px}.two-col{display:grid;grid-template-columns:1.6fr 1fr;gap:18px}.panel{padding:23px}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:21px}.panel h3{font-size:15px;margin:0;letter-spacing:-.3px}.progressbar{height:9px;background:#f0f0f8;overflow:hidden;border-radius:100px}.progressbar>div{height:100%;background:var(--primary);border-radius:100px;transition:width .25s}.progress-meta{display:flex;justify-content:space-between;gap:12px;margin-bottom:12px;color:#6d768e;font-size:12px}.progress-meta strong{color:var(--ink);font-size:14px}.muted{color:var(--muted);font-size:12px;line-height:1.8}.activity-bars{display:flex;align-items:end;justify-content:space-between;height:111px;gap:12px;padding-top:10px}.activity-col{flex:1;display:flex;align-items:center;flex-direction:column;justify-content:end;gap:7px;height:100%}.activity-col span{font-size:10px;color:#9ca4b3}.activity-barwrap{height:84px;width:100%;display:flex;align-items:end;justify-content:center}.activity-bar{width:min(32px,100%);background:#e5e2ff;border-radius:7px 7px 4px 4px;min-height:4px}.activity-bar.current{background:var(--primary)}.deck-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.deck-card{padding:22px;display:flex;justify-content:space-between;gap:12px;align-items:center}.deckcard-left{display:flex;align-items:center;gap:14px;min-width:0}.deck-emblem{width:50px;height:50px;display:grid;place-items:center;border-radius:15px;font-size:24px;flex-shrink:0}.deck-card h3{font-size:14px;margin:0 0 6px}.deck-card p{font-size:11px;color:var(--muted);margin:0}.circlearrow{display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;width:32px;height:32px;flex-shrink:0;color:#687087;background:#fff}.circlearrow:hover{background:#f5f5ff;color:var(--primary)}
+    .page-title h1{font-size:27px;letter-spacing:-.9px;margin:0 0 9px}.page-title p{font-size:13px;color:var(--muted);margin:0;line-height:1.8}.page-actions{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin:28px 0 18px}.form-select,.form-input{width:100%;background:#fff;border:1px solid #e4e6f0;color:var(--ink);padding:13px 14px;border-radius:12px;outline:0;font-size:13px}.form-input:focus,.form-select:focus{border-color:#918af0;box-shadow:0 0 0 3px #938cff20}.form-group label{display:block;font-size:12px;color:#5f6980;font-weight:750;margin-bottom:9px}.form-group{margin-bottom:16px}.select-wrap{min-width:180px}.learning-setup{display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px}.setup-card{background:#fff;border:1px solid #ebeaf4;border-radius:19px;padding:23px;cursor:pointer;position:relative;text-align:left;color:var(--ink);transition:.15s}.setup-card:hover,.setup-card.selected{border-color:#8c80f0;background:#f8f7ff}.setup-icon{width:48px;height:48px;border-radius:15px;background:#eeeaff;color:var(--primary);display:grid;place-items:center;font-size:24px;margin-bottom:20px}.setup-card h3{font-size:15px;margin:0 0 8px}.setup-card p{font-size:12px;line-height:1.7;color:var(--muted);margin:0}.selected-mark{position:absolute;top:15px;right:15px;color:var(--primary);font-size:20px}.setup-bottom{display:flex;justify-content:space-between;align-items:end;gap:18px;margin:23px 0 20px;flex-wrap:wrap}.setup-bottom .form-group{margin:0;flex:1;max-width:340px}.study-layout{max-width:760px;margin:28px auto}.study-top{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--muted);font-size:12px;font-weight:700;margin:0 0 17px}.study-progress{height:6px;background:#e8e8f2;border-radius:100px;overflow:hidden;margin-bottom:19px}.study-progress div{height:100%;background:var(--primary);border-radius:100px}.flashcard{border:1px solid #e7e5f5;border-radius:25px;background:#fff;box-shadow:0 15px 40px #24245109;padding:35px 30px;min-height:330px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative}.cardtop{font-size:11px;letter-spacing:1.5px;font-weight:850;color:#979bb0;position:absolute;top:23px;left:27px}.speak{border:0;color:var(--primary);background:var(--primary-light);padding:10px 12px;border-radius:50%;position:absolute;top:19px;right:22px;font-size:16px}.flashcard .word{font-size:clamp(26px,5vw,43px);font-weight:840;letter-spacing:-1px;line-height:1.3;max-width:100%;overflow-wrap:anywhere}.flashcard .phonetic{font-size:13px;color:#9ca2b3;margin-top:13px}.flashcard .translation{border-top:1px solid var(--line);margin-top:25px;padding-top:22px;width:100%;font-size:21px;font-weight:760}.flashcard .example{font-size:13px;color:#697388;line-height:1.9;margin-top:15px}.study-hint{font-size:12px;color:var(--muted);margin:16px auto;text-align:center;line-height:1.6}.answer-buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:18px}.answer-buttons button{border:1px solid var(--line);background:#fff;padding:16px 7px;border-radius:13px;font-size:12px;font-weight:800;color:var(--ink)}.answer-buttons button:hover{border-color:#847af3;background:#f8f7ff}.answer-buttons button span{display:block;font-size:10px;color:#929bab;font-weight:600;margin-top:5px}.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:15px}.quiz-option{padding:17px 16px;text-align:left;background:#fff;border:1px solid #e5e7f0;border-radius:14px;font-weight:700;font-size:14px;min-height:66px;color:var(--ink)}.quiz-option:hover:not(:disabled){border-color:var(--primary);background:#f6f4ff}.quiz-option.correct{background:#eafaf2;border-color:#4bc69e;color:#166e52;opacity:1}.quiz-option.incorrect{background:#fff0f1;border-color:#e8898c;color:#b74048;opacity:1}.feedback{margin-top:15px;background:#f2f0ff;border-radius:13px;padding:15px 17px;font-size:13px;line-height:1.75}.feedback.error{background:#fff1f1}.type-answer{display:flex;gap:9px;margin-top:15px}.type-answer input{flex:1;min-width:0}.complete{background:#fff;border:1px solid var(--line);border-radius:22px;max-width:580px;margin:40px auto;padding:44px 30px;text-align:center}.complete-symbol{font-size:52px}.complete h2{font-size:24px;margin:14px 0 9px}.complete p{font-size:13px;color:var(--muted);line-height:1.8}.complete-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:23px}
+    .library-list{display:flex;flex-direction:column;gap:9px}.library-row{background:#fff;border:1px solid var(--line);padding:16px 18px;border-radius:13px;display:flex;align-items:center;justify-content:space-between;gap:12px}.library-word{font-weight:800;font-size:15px}.library-sub{color:var(--muted);font-size:12px;line-height:1.65;margin-top:5px}.library-right{display:flex;align-items:center;gap:11px;flex-shrink:0}.tag{font-size:10px;border-radius:100px;background:#f0f1f8;color:#7b8499;font-weight:800;padding:7px 10px}.tag.ok{background:#dff8ee;color:#15815f}.tag.due{background:#fff1dc;color:#9c6e31}.icon-button{border:0;background:transparent;color:#8d94a5;font-size:17px;border-radius:9px;padding:7px}.icon-button:hover{background:#f4f3fd;color:var(--primary)}.empty{background:white;border:1px dashed #dcddea;color:var(--muted);border-radius:17px;padding:42px 20px;text-align:center;font-size:13px;line-height:1.8}.stats-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:16px}.big-number{font-size:43px;font-weight:850;margin:10px 0;letter-spacing:-1.5px}.legend{font-size:12px;color:var(--muted);margin-top:16px}.donut{width:134px;height:134px;border-radius:50%;background:conic-gradient(var(--primary) 0% var(--pct,0%),#eeeef9 var(--pct,0%) 100%);position:relative;flex-shrink:0}.donut:before{content:"";position:absolute;inset:22px;border-radius:50%;background:white}.donut:after{content:attr(data-label);position:absolute;inset:0;display:grid;place-items:center;font-weight:850;font-size:20px}.mastery{display:flex;align-items:center;justify-content:space-around;gap:22px;flex-wrap:wrap}.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.modal-backdrop{position:fixed;inset:0;background:#171b2c80;display:flex;align-items:center;justify-content:center;padding:20px;z-index:25}.modal{background:#fff;padding:28px;border-radius:22px;width:min(480px,100%);box-shadow:0 25px 60px #16172f20;max-height:90vh;overflow:auto}.modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}.modal-head h2{font-size:18px;margin:0}.modal-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:22px}.toast{position:fixed;bottom:26px;right:24px;z-index:30;background:#242547;color:#fff;font-weight:700;font-size:12px;padding:13px 18px;border-radius:11px;box-shadow:0 9px 24px #1e214122}.copyright{margin-top:42px;font-size:10px;color:#a6adbb;text-align:center}.shortcut{font-size:11px;color:#9ca3b4}.mobile-header{display:none}.mobile-nav{display:none}
+    .course-switch{display:flex;gap:5px;align-items:center;padding:4px;border:1px solid var(--line);background:white;border-radius:14px;white-space:nowrap}.course-btn{border:0;border-radius:10px;padding:9px 11px;color:#7d869b;background:transparent;font-size:12px;font-weight:800}.course-btn.active{color:var(--primary);background:var(--primary-light)}.mobile-course{display:none}.topright{flex-wrap:wrap;justify-content:flex-end}.topright .pill{padding:9px 12px}
+    @media(max-width:1050px){.app{grid-template-columns:205px 1fr}.main{padding:30px 25px 48px}.sidebar{padding:28px 14px 20px}.hero-art{flex-basis:145px}.art-circle{width:145px;height:145px;font-size:67px}}@media(max-width:750px){.desktop-course{display:none}.mobile-course{display:flex}.mobile-course .course-btn{padding:8px 10px;font-size:11px}.app{display:block}.sidebar{display:none}.main{padding:18px 18px calc(106px + env(safe-area-inset-bottom));width:100%}.mobile-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}.mobile-header .brand{padding:0;font-size:19px}.topline{margin-bottom:18px}.eyebrow{font-size:10px}.welcome{font-size:11px}.hero{padding:28px 24px;min-height:238px;border-radius:23px}.hero h1{font-size:25px}.hero-art{display:none}.grid-stats{gap:9px}.stat-card{padding:15px 13px;min-height:107px;border-radius:15px}.stat-value{font-size:25px}.stat-value span{display:block;font-size:10px;margin:1px 0 0}.stat-label{font-size:10px}.stat-icon{width:26px;height:26px;font-size:14px}.two-col,.stats-grid,.settings-grid{grid-template-columns:1fr}.deck-grid{gap:10px}.deck-card{padding:16px 12px}.deckcard-left{gap:10px}.deck-emblem{width:38px;height:38px;font-size:20px;border-radius:12px}.deck-card h3{font-size:12px}.deck-card p{font-size:10px}.circlearrow{width:26px;height:26px}.mobile-nav{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:space-around;gap:1px;background:#fff;border-top:1px solid var(--line);padding:8px 9px calc(8px + env(safe-area-inset-bottom));z-index:12;box-shadow:0 -6px 20px #15192c0a}.mobile-nav button{border:0;background:transparent;min-width:55px;flex:1;max-width:115px;border-radius:10px;color:#9299a9;padding:8px 0 5px;font-size:10px;font-weight:750;display:flex;flex-direction:column;align-items:center;gap:5px}.mobile-nav button span{font-size:20px}.mobile-nav button.active{color:var(--primary);background:#f2f0ff}.learning-setup{grid-template-columns:1fr}.setup-card{padding:18px;display:grid;grid-template-columns:50px 1fr;column-gap:14px;align-items:center}.setup-icon{margin:0;grid-row:span 2}.setup-card p{grid-column:2}.setup-card h3{margin:0}.study-layout{margin:25px auto}.flashcard{min-height:300px;padding:40px 19px}.flashcard .word{font-size:29px}.answer-buttons{gap:6px}.answer-buttons button{padding:12px 3px;font-size:11px}.answer-buttons button span{font-size:9px}.quiz-options{grid-template-columns:1fr}.quiz-option{min-height:50px;padding:13px 14px}.library-row{padding:13px 12px}.library-word{font-size:13px}.library-sub{font-size:11px}.library-right{gap:6px}.tag{font-size:9px;padding:6px}.page-actions{align-items:stretch}.page-actions>div:first-child{width:100%}.page-title h1{font-size:23px}.toast{bottom:95px;right:15px;left:15px;text-align:center}.shortcut{display:none}}
+    @media(max-width:365px){.mobile-header .brand{font-size:16px}.mobile-course .course-btn{font-size:10px;padding:7px 6px}.mobile-header .brandmark{width:32px;height:32px}}
+    @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+    .plan-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.plan-step{border:1px solid #e9e8f8;background:#fff;border-radius:18px;text-align:left;padding:18px;display:flex;flex-direction:column;align-items:flex-start;gap:8px;min-height:155px;color:var(--ink);box-shadow:var(--shadow)}.plan-step:hover{border-color:#a99ff9;background:#fcfbff}.plan-step-num{width:27px;height:27px;border-radius:9px;display:grid;place-items:center;background:#efedff;color:#6458e8;font-size:12px;font-weight:800}.plan-step strong{font-size:14px}.plan-step small{font-size:11px;line-height:1.65;color:var(--muted)}.plan-step-arrow{font-size:11px;color:var(--primary);font-weight:800;margin-top:auto}
+    @media(max-width:720px){.plan-grid{grid-template-columns:1fr}.plan-step{min-height:0;padding:15px 17px;display:grid;grid-template-columns:31px 1fr;column-gap:10px;row-gap:3px;align-items:center}.plan-step-num{grid-row:1/4}.plan-step strong,.plan-step small,.plan-step-arrow{grid-column:2}.plan-step-arrow{margin-top:4px}}
+  </style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+(()=>{
+  'use strict';
+  const ICONS={home:'⌂',learn:'▣',library:'▤',stats:'◷',settings:'⚙'};
+  const DECKS_EN=[
+    {id:'basics',name:'日常の基本',subtitle:'よく使う基本表現',icon:'✦',color:'#efedff'},
+    {id:'travel',name:'旅行・お出かけ',subtitle:'移動先で役立つ英語',icon:'◈',color:'#fff0db'},
+    {id:'work',name:'仕事・学校',subtitle:'勉強と会話の表現',icon:'▧',color:'#e0f8ef'},
+    {id:'conversation',name:'自然な会話',subtitle:'少し上級の言い回し',icon:'✳',color:'#eaf3ff'},
+    {id:'tense',name:'時制と完了形',subtitle:'過去・現在完了・未来を整理',icon:'◷',color:'#e9f4ff'},
+    {id:'wordorder',name:'語順・疑問文',subtitle:'英文の組み立てを整える',icon:'⇄',color:'#e8f8f0'},
+    {id:'prepositions',name:'前置詞・使い分け',subtitle:'at / in / on などを身につける',icon:'↗',color:'#fff1df'},
+    {id:'online',name:'SNS・ネット英語',subtitle:'投稿・返信・ネットの言い回し',icon:'@',color:'#f0ebff'},
+    {id:'nuance',name:'自然なリアクション',subtitle:'短い返答・微妙なニュアンス',icon:'✧',color:'#e3f6f4'},
+    {id:'opinion',name:'意見を伝える',subtitle:'理由・反論・説明に使う表現',icon:'✍',color:'#fff1e8'},
+    {id:'custom',name:'マイ単語',subtitle:'自分で追加したカード',icon:'＋',color:'#fbeaf4'}
+  ];
+  const DECKS_KO=[
+    {id:'hangul',name:'ハングル入門',subtitle:'読める人はスキップしてOK',icon:'한',color:'#e9f4ff'},
+    {id:'grammar',name:'文法・助詞',subtitle:'文字から文の意味を理解する',icon:'가',color:'#f0ebff'},
+    {id:'verbs',name:'動詞・活用',subtitle:'語尾で変わる意味を覚える',icon:'→',color:'#e3f6f4'},
+    {id:'reading',name:'短文読解',subtitle:'短い文を読んで意味をつかむ',icon:'文',color:'#fff1e8'},
+    {id:'basics',name:'日常の基本',subtitle:'挨拶・よく使う言葉',icon:'✦',color:'#efedff'},
+    {id:'travel',name:'旅行・お出かけ',subtitle:'韓国旅行ですぐに使える',icon:'◈',color:'#fff0db'},
+    {id:'work',name:'学校・仕事',subtitle:'学びや仕事で使う表現',icon:'▧',color:'#e0f8ef'},
+    {id:'conversation',name:'自然な会話',subtitle:'会話に役立つ言い回し',icon:'✳',color:'#eaf3ff'},
+    {id:'custom',name:'マイ単語',subtitle:'自分で追加したカード',icon:'＋',color:'#fbeaf4'}
+  ];
+  const COURSES={en:{name:'英語',flag:'EN',lang:'en-US',code:'EN'},ko:{name:'韓国語',flag:'한국어',lang:'ko-KR',code:'KO'}};
+  let course='en',DECKS=DECKS_EN;
+  // [English, Japanese, example sentence]
+  const DATA={
+    tense:[
+      ['I went there yesterday.','昨日そこへ行きました。','過去の特定の時点の話は過去形。I have gone there yesterday は通常不自然。'],
+      ['I have already eaten.','もう食べました。','現在完了：have + 過去分詞。現在の状態にも関係する完了を表す。'],
+      ['I have lived here for three years.','ここに3年間住んでいます。','for + 期間。「3年間ずっと」で今も住んでいる。'],
+      ['I have known her since 2020.','2020年から彼女を知っています。','since + 起点。know の継続は現在完了で表す。'],
+      ['I was watching TV when you called.','電話をくれたときテレビを見ていました。','過去進行形はその時点で続いていた動作。'],
+      ['I used to play this game.','以前はこのゲームをよくしていました。','used to + 原形：今とは異なる過去の習慣。'],
+      ['I am going to study tonight.','今夜勉強する予定です。','be going to：予定・意図を表す。'],
+      ['I will let you know.','分かったら知らせます。','will：意思やその場の決定などに使う。'],
+      ['I have never been to Seoul.','ソウルに行ったことがありません。','経験：have never been to + 場所。'],
+      ['Have you finished it yet?','もうそれを終えましたか？','疑問文：Have + 主語 + 過去分詞。yet は疑問・否定でよく使う。'],
+      ['I have not finished it yet.','まだそれを終えていません。','not ... yet：まだ〜していない。'],
+      ['I have just arrived.','ちょうど到着したところです。','have just + 過去分詞：たった今の完了。'],
+      ['When did you start learning Korean?','韓国語の勉強をいつ始めましたか？','過去の開始時点を問うので did + 動詞原形。'],
+      ['I am used to getting up early.','早起きに慣れています。','be used to + 名詞・動名詞。「used to + 原形」と区別する。'],
+      ['If it rains, I will stay home.','雨が降ったら家にいます。','未来の条件でも if 節の中は通常現在形。'],
+      ['I wish I had more time.','もっと時間があればいいのに。','現実とは異なる願望：wish + 過去形。']
+    ],
+    wordorder:[
+      ['What did you say?','何と言いましたか？','疑問詞 + did + 主語 + 動詞原形。'],
+      ['Do you know where he is?','彼がどこにいるか知っていますか？','間接疑問文は where he is。where is he にしない。'],
+      ['I do not know what to do.','どうすればいいか分かりません。','疑問詞 + to + 動詞原形。'],
+      ['She does not like coffee.','彼女はコーヒーが好きではありません。','does not の後ろは動詞原形 like。'],
+      ['I have never seen that movie.','その映画は一度も見たことがありません。','never は have の後ろ、過去分詞の前。'],
+      ['I usually take the train.','普段は電車を利用します。','頻度の副詞 usually は一般動詞の前が基本。'],
+      ['He is always late.','彼はいつも遅刻します。','be動詞の文では always は be の後。'],
+      ['It is hard for me to explain.','私には説明するのが難しいです。','It is + 形容詞 + for 人 + to ...。'],
+      ['I want you to check this.','これを確認してほしいです。','want + 人 + to + 動詞原形。'],
+      ['This is the person I told you about.','この人が以前話した人です。','関係代名詞が省略された口語的な文。'],
+      ['I do not think that is correct.','それが正しいとは思いません。','I do not think ... は自然な否定の位置。'],
+      ['The more I practice, the easier it gets.','練習するほど簡単になります。','the 比較級 ..., the 比較級 ...。'],
+      ['I found it difficult to understand.','理解するのが難しいと感じました。','find + it + 形容詞 + to ... の語順。'],
+      ['Could you tell me how this works?','これがどう動くか教えてもらえますか？','間接疑問：how this works（how does this work ではない）。'],
+      ['I have something to ask you.','聞きたいことがあります。','something + to + 動詞原形。'],
+      ['That is why I chose it.','だからそれを選びました。','That is why + 理由の結果となる内容。']
+    ],
+    prepositions:[
+      ['I arrived at the station.','駅に到着しました。','arrive at：駅や建物などの地点。arrive to は通常使わない。'],
+      ['I arrived in Japan.','日本に到着しました。','arrive in：国・都市などの広い場所。'],
+      ['I am good at English.','英語が得意です。','be good at + 名詞 / 動名詞。'],
+      ['I am interested in F1.','F1に興味があります。','be interested in + 名詞。'],
+      ['I am looking forward to the race.','レースを楽しみにしています。','look forward to の to は前置詞。後ろは名詞 / 動名詞。'],
+      ['I am working on a project.','プロジェクトに取り組んでいます。','work on：作業や課題に取り組む。'],
+      ['I depend on my phone.','スマートフォンに頼っています。','depend on：〜に依存する。'],
+      ['I am worried about the result.','結果を心配しています。','be worried about：〜を心配する。'],
+      ['I agree with you.','あなたに賛成です。','agree with + 人。agree to + 提案などとは区別。'],
+      ['It depends on the weather.','天気によります。','depend on + 条件。'],
+      ['I am on the train.','電車に乗っています。','公共交通機関は on the train / bus などが一般的。'],
+      ['I am in the car.','車の中にいます。','乗用車の車内は in the car が一般的。'],
+      ['Let us meet at six.','6時に会いましょう。','時刻には at。曜日や日付には on が基本。'],
+      ['I will see you on Monday.','月曜日に会いましょう。','曜日には on。'],
+      ['I was born in September.','9月に生まれました。','月・年・季節には in。'],
+      ['I have been waiting for an hour.','1時間待っています。','for + 期間。since + 開始時点との違い。']
+    ],
+    basics:[
+      ['actually','実は／実際には','Actually, I have a question.'],['almost','ほとんど','I almost missed the train.'],['already','すでに','I have already finished.'],['although','〜だけれども','Although it was late, I continued.'],['probably','おそらく','It will probably rain.'],['especially','特に','I especially like this song.'],['sometimes','ときどき','I sometimes study at night.'],['usually','普段は','I usually get up at seven.'],['enough','十分な','We have enough time.'],['instead','その代わりに','Let’s walk instead.'],['available','利用できる／空いている','Is this seat available?'],['important','重要な','This is an important decision.'],['different','異なる','We have different opinions.'],['possible','可能な','Is it possible to change it?'],['reason','理由','What is the reason?'],['improve','改善する／上達する','I want to improve my English.'],['remember','覚えている','Please remember this word.'],['forget','忘れる','Don’t forget your keys.'],['decide','決める','I need to decide today.'],['choose','選ぶ','You can choose any one.']
+    ],
+    travel:[
+      ['Where is the station?','駅はどこですか？','Excuse me, where is the station?'],['How much is it?','いくらですか？','How much is it for one ticket?'],['I have a reservation.','予約しています。','Hello, I have a reservation.'],['Could you help me?','手伝っていただけますか？','Could you help me with this bag?'],['Is this the right train?','この電車で合っていますか？','Is this the right train for Osaka?'],['One way, please.','片道でお願いします。','One way, please.'],['Round trip, please.','往復でお願いします。','Round trip, please.'],['What time does it leave?','何時に出発しますか？','What time does the bus leave?'],['I’m looking for...','〜を探しています。','I’m looking for the ticket counter.'],['Can I pay by card?','カードで払えますか？','Can I pay by card here?'],['Do you have Wi-Fi?','Wi-Fiはありますか？','Do you have free Wi-Fi?'],['I’d like to check in.','チェックインしたいです。','I’d like to check in, please.'],['Could I have the menu?','メニューをいただけますか？','Could I have the menu, please?'],['No onions, please.','玉ねぎ抜きでお願いします。','No onions, please.'],['Could you say that again?','もう一度言っていただけますか？','Sorry, could you say that again?'],['Is it within walking distance?','歩いて行ける距離ですか？','Is it within walking distance?']
+    ],
+    work:[
+      ['deadline','締め切り','The deadline is next Friday.'],['schedule','予定／日程','Let’s check the schedule.'],['project','プロジェクト','I’m working on a new project.'],['meeting','会議','We have a meeting tomorrow.'],['feedback','フィードバック','Thank you for your feedback.'],['requirement','要件','Please review the requirements.'],['solution','解決策','We need a better solution.'],['challenge','課題／挑戦','This is a difficult challenge.'],['opportunity','機会','It’s a great opportunity to learn.'],['experience','経験','I have experience with JavaScript.'],['research','調査する／研究','I need to research this topic.'],['prepare','準備する','I will prepare the slides.'],['explain','説明する','Could you explain the problem?'],['compare','比較する','Let’s compare the results.'],['specific','具体的な','Can you give a specific example?'],['necessary','必要な','Is this step necessary?'],['update','更新する／最新情報','I’ll send you an update.'],['achieve','達成する','We achieved our goal.'],['priority','優先事項','This task is my priority.'],['confirm','確認する','Please confirm the date.']
+    ],
+    conversation:[
+      ['That makes sense.','なるほど／筋が通っています。','That makes sense. Thanks for explaining.'],['It depends.','場合によります。','It depends on the weather.'],['I’m not sure yet.','まだ分かりません。','I’m not sure yet.'],['As far as I know,','私の知る限りでは','As far as I know, it’s free.'],['By the way,','ところで','By the way, how was your weekend?'],['To be honest,','正直に言うと','To be honest, I was nervous.'],['I see what you mean.','言いたいことは分かります。','I see what you mean.'],['That sounds great!','それはよさそう！','That sounds great! Let’s do it.'],['I’ll think about it.','考えておきます。','Thanks. I’ll think about it.'],['What do you think?','どう思いますか？','What do you think about this idea?'],['I agree with you.','あなたに賛成です。','I agree with you on that.'],['Not necessarily.','必ずしもそうではありません。','Not necessarily. There are other options.'],['Let me check.','確認させてください。','Let me check the details.'],['I was wondering if...','〜かと思いまして','I was wondering if you could help.'],['I’d rather...','むしろ〜したいです。','I’d rather stay home tonight.'],['That’s a good point.','それはよい指摘です。','That’s a good point.'],['I didn’t catch that.','聞き取れませんでした。','Sorry, I didn’t catch that.'],['It’s up to you.','あなた次第です。','It’s up to you.'],['Take your time.','ゆっくりで大丈夫です。','Take your time. No rush.'],['I appreciate it.','感謝します。','I really appreciate it.']
+    ],
+    online:[
+      ['That aged well.','あとから見ても的確だった（皮肉で逆の意味にもなる）','This prediction aged well.'],
+      ['I did not see that coming.','それは予想外だった','That announcement? I did not see that coming.'],
+      ['For context,','背景を説明すると','For context, this was recorded last year.'],
+      ['Hot take:','あえて言うけど／賛否ありそうな意見だけど','Hot take: the old version was better.'],
+      ['Fair enough.','それなら納得／まあそうだね','You need a break? Fair enough.'],
+      ['This is wild.','これはすごい／信じられない','The ending is wild.'],
+      ['I can relate.','分かる、共感できる','I can relate to that feeling.'],
+      ['Not gonna lie,','正直に言うと（かなり口語的）','Not gonna lie, I was impressed.'],
+      ['Worth a shot.','試してみる価値はある','It might not work, but it is worth a shot.'],
+      ['I am all for it.','大賛成だ','A shorter meeting? I am all for it.'],
+      ['That is on me.','それは自分の責任だ','I forgot to reply. That is on me.'],
+      ['To be fair,','公平に言えば','To be fair, they had very little time.'],
+      ['Apparently,','どうやら／聞いたところでは','Apparently, the update is delayed.'],
+      ['Turns out,','結局分かったのは／実は','Turns out, I had the wrong date.'],
+      ['Any thoughts?','どう思う？／意見ある？','I posted a draft. Any thoughts?'],
+      ['I am here for it.','それ最高、支持する（口語的）','More behind-the-scenes videos? I am here for it.'],
+      ['I get the hype.','人気になる理由が分かる','After trying it, I get the hype.'],
+      ['That is a stretch.','それは少し無理のある解釈だ','Calling it a complete failure is a stretch.']
+    ],
+    nuance:[
+      ['I am not sold on it.','まだ納得・賛成できない','I am not sold on the new design.'],
+      ['That rings a bell.','それは聞き覚えがある','The name rings a bell.'],
+      ['I will take your word for it.','あなたの言うことを信じるよ','I have not seen it, but I will take your word for it.'],
+      ['It slipped my mind.','うっかり忘れていた','Sorry, it slipped my mind.'],
+      ['I am leaning toward...','どちらかというと〜に傾いている','I am leaning toward the cheaper option.'],
+      ['You have got a point.','確かに一理ある','You have got a point about the timing.'],
+      ['I would not go that far.','そこまでは言わないかな','It is good, but I would not go that far.'],
+      ['That is beside the point.','それは論点と関係ない','The price is beside the point here.'],
+      ['I am on the fence.','まだ決めかねている','I am on the fence about buying it.'],
+      ['I can live with that.','それなら妥協できる','A small delay? I can live with that.'],
+      ['It is not a big deal.','大した問題ではない','Do not worry. It is not a big deal.'],
+      ['I have mixed feelings.','複雑な気持ちだ','I have mixed feelings about the ending.'],
+      ['That is a relief.','それは安心した','The test was postponed? That is a relief.'],
+      ['I would rather not.','できれば遠慮したい','Thanks, but I would rather not.'],
+      ['I will get back to you.','後で返事する','I will get back to you tomorrow.'],
+      ['I am up for it.','やってみたい／参加したい','A quick game? I am up for it.'],
+      ['No hard feelings.','悪く思わないで／わだかまりはなし','We disagree, but no hard feelings.'],
+      ['It comes down to...','要するに〜次第だ','It comes down to cost and time.']
+    ],
+    opinion:[
+      ['The main reason is that...','主な理由は〜ということだ','The main reason is that it saves time.'],
+      ['What concerns me is...','私が懸念しているのは〜だ','What concerns me is the lack of testing.'],
+      ['From my perspective,','私の視点では','From my perspective, it is too expensive.'],
+      ['I see it differently.','私は違う見方をしている','I see it differently because of the data.'],
+      ['That said,','とはいえ','That said, I understand your concern.'],
+      ['On the other hand,','一方で','On the other hand, it is easier to maintain.'],
+      ['It is worth considering...','〜を検討する価値がある','It is worth considering a second option.'],
+      ['I would argue that...','私としては〜と考える','I would argue that quality matters more.'],
+      ['I might be wrong, but...','間違っているかもしれないけど','I might be wrong, but the rule changed.'],
+      ['Could you elaborate?','もう少し詳しく説明してくれる？','Could you elaborate on that point?'],
+      ['What I mean is...','私が言いたいのは〜','What I mean is, we need more time.'],
+      ['In other words,','言い換えると','In other words, the plan is not ready.'],
+      ['As a result,','その結果','As a result, we missed the deadline.'],
+      ['I take your point, but...','言いたいことは分かるけど〜','I take your point, but I still disagree.'],
+      ['It depends on whether...','〜かどうかによる','It depends on whether we have enough time.'],
+      ['I am not convinced that...','〜とはまだ確信できない','I am not convinced that it will work.'],
+      ['Let me put it this way.','別の言い方をすると','Let me put it this way: it is risky.'],
+      ['I would appreciate it if...','〜してもらえるとありがたい','I would appreciate it if you could review this.']
+    ]
+  };
+  // [Korean, Japanese, example sentence / reading help]
+  const DATA_KO={
+    grammar:[
+      ['저는 학생이에요.','私は学生です。','저는＝私は（話題の助詞 는）／학생＝学生／이에요＝〜です'],
+      ['제가 할게요.','私がやります。','제가＝私が（主語の助詞 가）／할게요＝やりますね'],
+      ['친구를 만나요.','友達に会います。','를＝目的語の助詞／만나다＝会う'],
+      ['학교에 가요.','学校へ行きます。','에＝行き先や時刻などを表す助詞'],
+      ['집에서 공부해요.','家で勉強します。','에서＝動作する場所を表す助詞'],
+      ['친구하고 이야기해요.','友達と話します。','하고＝〜と／이야기하다＝話す'],
+      ['한국어를 배우고 싶어요.','韓国語を学びたいです。','-고 싶어요＝〜したいです'],
+      ['내일 갈 거예요.','明日行くつもりです。','-(으)ㄹ 거예요＝未来・予定'],
+      ['시간이 없어서 못 가요.','時間がないので行けません。','-아서/어서＝理由・前後のつながり／못＝できない'],
+      ['비가 오면 집에 있을 거예요.','雨が降ったら家にいます。','-(으)면＝〜なら・〜したら'],
+      ['어렵지만 재미있어요.','難しいですが面白いです。','-지만＝〜だが／재미있다＝面白い'],
+      ['한국어를 조금 할 수 있어요.','韓国語を少し話せます。','-(으)ㄹ 수 있어요＝〜できる'],
+      ['여기에 앉아도 돼요?','ここに座ってもいいですか？','-아도/어도 돼요＝〜してもよい'],
+      ['지금 가야 해요.','今行かなければなりません。','-아야/어야 해요＝〜しなければならない'],
+      ['지금 공부하고 있어요.','今勉強しています。','-고 있어요＝〜している最中'],
+      ['어제 영화를 봤어요.','昨日映画を見ました。','-았어요/었어요＝過去形／보다→봤어요'],
+      ['다시 말해 주세요.','もう一度言ってください。','-아/어 주세요＝〜してください'],
+      ['커피를 안 마셔요.','コーヒーを飲みません。','안＋動詞＝〜しない'],
+      ['오늘은 못 만나요.','今日は会えません。','못＋動詞＝〜できない'],
+      ['같이 갈까요?','一緒に行きましょうか？','-(으)ㄹ까요?＝提案・相談'],
+      ['이게 더 좋은 것 같아요.','こちらの方がよさそうです。','것 같아요＝〜と思います／推測や控えめな意見'],
+      ['책이 세 권 있어요.','本が3冊あります。','권＝本を数える助数詞／세＝3（固有数詞）'],
+      ['저도 그렇게 생각해요.','私もそう思います。','도＝〜も／그렇게＝そのように'],
+      ['이거보다 저게 싸요.','これよりあれの方が安いです。','보다＝〜より／싸다＝安い']
+    ],
+    verbs:[
+      ['먹다 → 먹어요','食べる → 食べます','먹다（辞書形）／먹어요（丁寧な現在形）'],
+      ['마시다 → 마셔요','飲む → 飲みます','마시다 → 마셔요（아요/어요形）'],
+      ['가다 → 가요','行く → 行きます','가다 → 가요'],
+      ['오다 → 와요','来る → 来ます','오다 → 와요'],
+      ['보다 → 봐요','見る → 見ます','보다 → 봐요'],
+      ['하다 → 해요','する → します','하다 → 해요'],
+      ['공부하다 → 공부해요','勉強する → 勉強します','-하다 動詞は -해요 になる'],
+      ['읽다 → 읽어요','読む → 読みます','읽다 → 읽어요'],
+      ['듣다 → 들어요','聞く → 聞きます','ㄷ不規則：듣다 → 들어요'],
+      ['걷다 → 걸어요','歩く → 歩きます','ㄷ不規則：걷다 → 걸어요'],
+      ['모르다 → 몰라요','分からない → 分かりません','르不規則：모르다 → 몰라요'],
+      ['바쁘다 → 바빠요','忙しい → 忙しいです','ㅡ脱落：바쁘다 → 바빠요'],
+      ['맛있다 → 맛있어요','おいしい → おいしいです','形容詞も丁寧形にできる'],
+      ['좋다 → 좋아요','よい → よいです','좋다 → 좋아요'],
+      ['먹었어요','食べました','먹다 の過去形'],
+      ['갈 거예요','行く予定です','가다 の未来・予定表現'],
+      ['안 먹어요','食べません','안＋動詞で否定'],
+      ['못 먹어요','食べられません','못＋動詞で不可能'],
+      ['먹고 싶어요','食べたいです','-고 싶어요＝したい'],
+      ['먹어 봤어요','食べてみたことがあります','-아/어 보다＝試しにする／経験する']
+    ],
+    reading:[
+      ['오늘은 시간이 없어서 집에서 공부해요.','今日は時間がないので家で勉強します。','오늘은＝今日は／없어서＝ないので／집에서＝家で'],
+      ['어제 친구를 만나서 같이 밥을 먹었어요.','昨日友達と会って一緒にご飯を食べました。','만나서＝会って／같이＝一緒に／먹었어요＝食べました'],
+      ['주말에는 보통 집에서 쉬어요.','週末は普段家で休みます。','주말＝週末／보통＝普段／쉬다＝休む'],
+      ['한국어는 읽을 수 있지만 아직 뜻을 잘 몰라요.','韓国語は読めますがまだ意味がよく分かりません。','읽을 수 있다＝読める／하지만＝しかし／뜻＝意味'],
+      ['이 노래는 좋은데 가사가 어려워요.','この曲はよいけれど歌詞が難しいです。','-는데＝対比・背景／가사＝歌詞'],
+      ['내일 비가 오면 약속을 바꿀 거예요.','明日雨が降ったら約束を変更するつもりです。','비가 오다＝雨が降る／약속＝約束／바꾸다＝変える'],
+      ['지금은 바쁘니까 나중에 전화할게요.','今は忙しいので後で電話しますね。','-니까＝〜なので／나중에＝後で／-ㄹ게요＝意思'],
+      ['저는 매운 음식보다 단 음식을 좋아해요.','私は辛い食べ物より甘い食べ物が好きです。','매운＝辛い／보다＝〜より／단＝甘い'],
+      ['지하철이 더 빠르지만 버스가 더 싸요.','地下鉄の方が速いですがバスの方が安いです。','빠르다＝速い／싸다＝安い／더＝より'],
+      ['아직 숙제를 못 끝내서 조금 걱정돼요.','まだ宿題を終えられず少し心配です。','아직＝まだ／끝내다＝終える／걱정되다＝心配だ'],
+      ['사진을 찍어도 되는지 물어봤어요.','写真を撮ってもよいか聞いてみました。','-아/어도 되다＝許可／-는지＝〜かどうか／물어보다＝尋ねる'],
+      ['모르는 단어가 있으면 메모해 두세요.','分からない単語があったらメモしておいてください。','모르는＝知らない／-으면＝〜なら／-아/어 두다＝〜しておく'],
+      ['조금씩 연습하면 더 자연스럽게 말할 수 있어요.','少しずつ練習すればもっと自然に話せます。','조금씩＝少しずつ／연습하면＝練習すれば／자연스럽게＝自然に'],
+      ['오늘 본 영상은 생각보다 재미있었어요.','今日見た動画は思ったより面白かったです。','본＝見た／영상＝動画／생각보다＝思ったより'],
+      ['어떤 표현이 자연스러운지 잘 모르겠어요.','どの表現が自然なのかよく分かりません。','어떤＝どの／표현＝表現／-는지＝〜かどうか'],
+      ['이해는 되지만 바로 대답하기는 어려워요.','理解はできますがすぐに返事するのは難しいです。','이해가 되다＝理解できる／바로＝すぐ／-기는＝〜することは'],
+      ['그렇게 말하면 조금 차갑게 들릴 수 있어요.','そう言うと少し冷たく聞こえることがあります。','차갑게＝冷たく／들리다＝聞こえる／-ㄹ 수 있다＝可能性'],
+      ['다음에는 자막 없이 한번 들어 보고 싶어요.','次は字幕なしで一度聞いてみたいです。','자막 없이＝字幕なしで／들어 보다＝聞いてみる']
+    ],
+    hangul:[
+      ['ㅏ','母音：ア（a）','아 (a)'],['ㅑ','母音：ヤ（ya）','야 (ya)'],['ㅓ','母音：オに近い音（eo）','어 (eo)'],['ㅕ','母音：ヨに近い音（yeo）','여 (yeo)'],
+      ['ㅗ','母音：オ（o）','오 (o)'],['ㅛ','母音：ヨ（yo）','요 (yo)'],['ㅜ','母音：ウ（u）','우 (u)'],['ㅠ','母音：ユ（yu）','유 (yu)'],
+      ['ㅡ','母音：ウ（eu、唇を丸めない）','으 (eu)'],['ㅣ','母音：イ（i）','이 (i)'],
+      ['ㄱ','子音：カ行／ガ行に近い（g/k）','가 (ga)'],['ㄴ','子音：ナ行（n）','나 (na)'],['ㄷ','子音：タ行／ダ行に近い（d/t）','다 (da)'],
+      ['ㄹ','子音：ラ行に近い（r/l）','라 (ra)'],['ㅁ','子音：マ行（m）','마 (ma)'],['ㅂ','子音：パ行／バ行に近い（b/p）','바 (ba)'],
+      ['ㅅ','子音：サ行（s）','사 (sa)'],['ㅇ','子音：語頭は無音、語末はng','아 (a) / 강 (gang)'],['ㅈ','子音：ジャ行／チャ行に近い（j）','자 (ja)'],
+      ['ㅊ','子音：強いチャ行（ch）','차 (cha)'],['ㅋ','子音：強いカ行（k）','카 (ka)'],['ㅌ','子音：強いタ行（t）','타 (ta)'],
+      ['ㅍ','子音：強いパ行（p）','파 (pa)'],['ㅎ','子音：ハ行（h）','하 (ha)']
+    ],
+    basics:[
+      ['안녕하세요','こんにちは（丁寧）','안녕하세요. 반갑습니다.'],['감사합니다','ありがとうございます','정말 감사합니다.'],['고맙습니다','ありがとうございます（丁寧）','도와주셔서 고맙습니다.'],
+      ['죄송합니다','申し訳ありません','늦어서 죄송합니다.'],['네','はい','네, 알겠습니다.'],['아니요','いいえ','아니요, 괜찮아요.'],
+      ['괜찮아요','大丈夫です','저는 괜찮아요.'],['좋아요','いいです／好きです','이 노래가 좋아요.'],['싫어요','嫌です／好きではないです','매운 음식은 싫어요.'],
+      ['주세요','ください','물 주세요.'],['있어요','あります／います','시간이 있어요.'],['없어요','ありません／いません','시간이 없어요.'],
+      ['이거','これ','이거 뭐예요?'],['저거','あれ','저거 주세요.'],['뭐예요?','何ですか？','이거 뭐예요?'],
+      ['어디예요?','どこですか？','화장실이 어디예요?'],['누구예요?','誰ですか？','저 사람은 누구예요?'],['언제예요?','いつですか？','시험이 언제예요?'],
+      ['오늘','今日','오늘은 토요일이에요.'],['내일','明日','내일 만나요.'],['어제','昨日','어제 공부했어요.'],['지금','今','지금 출발해요.'],
+      ['친구','友達','친구를 만나요.'],['한국어','韓国語','한국어를 공부해요.']
+    ],
+    travel:[
+      ['화장실이 어디예요?','トイレはどこですか？','죄송한데 화장실이 어디예요?'],['얼마예요?','いくらですか？','이거 얼마예요?'],
+      ['카드 돼요?','カードは使えますか？','여기 카드 돼요?'],['물 주세요','水をください','물 한 잔 주세요.'],['메뉴 주세요','メニューをください','메뉴 좀 주세요.'],
+      ['이거 주세요','これをください','이거 하나 주세요.'],['맛있어요','おいしいです','정말 맛있어요.'],['매워요','辛いです','이 음식은 매워요.'],
+      ['안 매운 거 있어요?','辛くないものはありますか？','안 매운 거 있어요?'],['지하철역','地下鉄の駅','지하철역이 어디예요?'],
+      ['표 한 장 주세요','切符を1枚ください','서울역까지 표 한 장 주세요.'],['여기서 내려요','ここで降ります','저는 여기서 내려요.'],
+      ['예약했어요','予約しました','호텔을 예약했어요.'],['사진 찍어 주세요','写真を撮ってください','사진 한 장 찍어 주세요.'],
+      ['길을 잃었어요','道に迷いました','죄송해요. 길을 잃었어요.'],['도와주세요','助けてください','제발 도와주세요.']
+    ],
+    work:[
+      ['학교','学校','학교에 가요.'],['학생','学生','저는 학생이에요.'],['선생님','先生','선생님께 질문해요.'],
+      ['공부하다','勉強する','매일 한국어를 공부해요.'],['숙제','宿題','숙제를 끝냈어요.'],['시험','試験','내일 시험이 있어요.'],
+      ['질문','質問','질문이 있어요.'],['설명하다','説明する','다시 설명해 주세요.'],['프로젝트','プロジェクト','새 프로젝트를 시작해요.'],
+      ['회의','会議','오후에 회의가 있어요.'],['시간','時間','시간이 좀 필요해요.'],['일정','予定・日程','일정을 확인해요.'],
+      ['문제','問題','문제를 해결해요.'],['컴퓨터','コンピューター','컴퓨터를 켰어요.'],['코딩','コーディング','코딩을 배우고 있어요.'],
+      ['수고하셨습니다','お疲れさまでした','오늘도 수고하셨습니다.']
+    ],
+    conversation:[
+      ['잘 지냈어요?','元気にしていましたか？','오랜만이에요! 잘 지냈어요?'],['반가워요','お会いできてうれしいです','만나서 반가워요.'],
+      ['이름이 뭐예요?','名前は何ですか？','이름이 뭐예요?'],['저는 일본 사람이에요','私は日本人です','저는 일본 사람이에요.'],
+      ['천천히 말해 주세요','ゆっくり話してください','한국어가 어려워요. 천천히 말해 주세요.'],['다시 말해 주세요','もう一度言ってください','죄송하지만 다시 말해 주세요.'],
+      ['잘 모르겠어요','よく分かりません','아직 잘 모르겠어요.'],['알겠어요','分かりました','네, 알겠어요.'],
+      ['정말요?','本当ですか？','정말요? 대단해요!'],['맞아요','そうです／合っています','네, 맞아요.'],
+      ['그렇군요','そうなんですね','아, 그렇군요.'],['어떻게 생각해요?','どう思いますか？','이 영화 어떻게 생각해요?'],
+      ['저도요','私もです','저도요!'],['좋은 생각이에요','いい考えですね','그거 좋은 생각이에요.'],
+      ['나중에 봐요','また後で会いましょう','그럼 나중에 봐요.'],['조심히 가세요','気をつけてお帰りください','조심히 가세요!']
+    ]
+  };
+  const builtins=[...Object.entries(DATA).flatMap(([deck,list])=>list.map((v,i)=>({id:deck+'-'+i,lang:'en',deck,front:v[0],back:v[1],example:v[2]}))),...Object.entries(DATA_KO).flatMap(([deck,list])=>list.map((v,i)=>({id:'ko-'+deck+'-'+i,lang:'ko',deck,front:v[0],back:v[1],example:v[2]})))];
+  const STORAGE='lingo-atelier-v1';
+  const blank=()=>({version:2,course:'en',progress:{},events:[],custom:[],goal:10});
+  let data=load(),view='home',selectedMode='cards',selectedDeck='all',session=null,search='',libraryDeck='all',modal=null,toastTimer=0;
+  course=data.course==='ko'?'ko':'en';DECKS=course==='ko'?DECKS_KO:DECKS_EN;
+  function load(){try{const v=JSON.parse(localStorage.getItem(STORAGE));if(v&&[1,2].includes(v.version)&&v.progress&&typeof v.progress==='object'&&!Array.isArray(v.progress)&&Array.isArray(v.events)&&Array.isArray(v.custom)){return {...blank(),...v,version:2,course:v.course==='ko'?'ko':'en',custom:v.custom.map(c=>({...c,lang:c.lang==='ko'?'ko':'en'})),events:v.events.map(e=>({...e,lang:e.lang==='ko'?'ko':'en'})),goal:Math.max(1,Math.min(100,Number(v.goal)||10))}}}catch(e){}return blank()}
+  function persist(){try{localStorage.setItem(STORAGE,JSON.stringify(data))}catch(e){toast('保存に失敗しました。ブラウザのストレージ設定を確認してください。')}}
+  function allCards(){return builtins.concat(data.custom).filter(c=>c.lang===course)}
+  function courseEvents(){return data.events.filter(e=>e.lang===course)}
+  function switchCourse(lang){if(!COURSES[lang]||lang===course)return;course=lang;DECKS=lang==='ko'?DECKS_KO:DECKS_EN;data.course=lang;selectedDeck='all';libraryDeck='all';selectedMode='cards';session=null;modal=null;search='';persist();go('home');toast(COURSES[lang].name+'コースに切り替えました')}
+  const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
+  function dateOffset(d,n){const parts=d.split('-').map(Number);const t=new Date(parts[0],parts[1]-1,parts[2]+n);return `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,'0')}-${String(t.getDate()).padStart(2,'0')}`}
+  function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+  function getProgress(id){return data.progress[id]||{n:0,interval:0,ease:2.5,due:today(),correct:0,wrong:0}}
+  function learned(c){return (data.progress[c.id]?.n||0)>0}
+  function due(c){const p=data.progress[c.id];return !!p&&p.n>0&&p.due<=today()}
+  function reviewedToday(){return courseEvents().filter(e=>e.date===today()).length}
+  function streak(){const dates=new Set(courseEvents().map(e=>e.date));let x=today();if(!dates.has(x))x=dateOffset(x,-1);let n=0;while(dates.has(x)){n++;x=dateOffset(x,-1)}return n}
+  function countLearned(){return allCards().filter(learned).length}
+  function answeredRatio(){const events=courseEvents(),total=events.length;return total?Math.round(100*events.filter(e=>e.correct).length/total):0}
+  function selectDeckCards(deck){return allCards().filter(c=>deck==='all'||c.deck===deck)}
+  function todayActivities(){const t=today();return Array.from({length:7},(_,i)=>{const date=dateOffset(t,i-6);return {date,count:courseEvents().filter(e=>e.date===date).length}})}
+  function toast(msg){document.querySelector('.toast')?.remove();const e=document.createElement('div');e.className='toast';e.textContent=msg;document.body.appendChild(e);clearTimeout(toastTimer);toastTimer=setTimeout(()=>e.remove(),3000)}
+  function go(v){view=v;session=null;modal=null;search='';render();window.scrollTo({top:0,behavior:'instant'})}
+  function courseButtons(){return Object.entries(COURSES).map(([id,c])=>`<button type="button" data-course="${id}" class="course-btn ${course===id?'active':''}" aria-pressed="${course===id}">${id==='ko'?'🇰🇷':'🇬🇧'} ${c.name}</button>`).join('')}
+  function shell(inner){let nav=[['home','ホーム'],['learn','学習する'],['library','単語帳'],['stats','学習記録'],['settings','設定']];return `<div class="app"><aside class="sidebar"><div class="brand"><div class="brandmark"><span>あ</span></div> lingo<span style="color:var(--primary)">.</span></div><div class="sidelabel">MY WORKSPACE</div><nav class="nav">${nav.map(([id,label])=>`<button class="navbutton ${view===id?'active':''}" data-nav="${id}"><span class="navicon">${ICONS[id]}</span>${label}</button>`).join('')}</nav><div class="sidebottom"><b>Small steps, big progress.</b><p>1日少しずつ。忘れる前に、もう一度。</p><button data-nav="settings">学習設定を見る →</button></div></aside><main class="main"><header class="mobile-header"><div class="brand"><div class="brandmark"><span>あ</span></div> lingo<span style="color:var(--primary)">.</span></div><div class="course-switch mobile-course" role="group" aria-label="学習する言語">${courseButtons()}</div></header><div class="topline"><div><div class="eyebrow">YOUR LANGUAGE JOURNEY</div><div class="welcome">自分のペースで、今日も少し前へ。</div></div><div class="topright"><div class="course-switch desktop-course" role="group" aria-label="学習する言語">${courseButtons()}</div><div class="pill">♨ ${streak()}日連続</div></div></div>${inner}<div class="copyright">LINGO ATELIER · Local-first language learning · データはこのブラウザに保存されます</div></main></div><nav class="mobile-nav">${nav.map(([id,label])=>`<button class="${view===id?'active':''}" data-nav="${id}"><span>${ICONS[id]}</span>${label}</button>`).join('')}</nav>`}
+  function activityChart(){const a=todayActivities(),max=Math.max(6,...a.map(x=>x.count));return `<div class="activity-bars">${a.map((x,i)=>`<div class="activity-col"><div class="activity-barwrap"><div class="activity-bar ${i===6?'current':''}" style="height:${Math.max(5,(x.count/max)*100)}%" title="${x.date}: ${x.count}問"></div></div><span>${['日','月','火','水','木','金','土'][new Date(x.date+'T12:00:00').getDay()]}</span></div>`).join('')}</div>`}
+  function deckCard(d){const cards=selectDeckCards(d.id);return `<article class="deck-card"><div class="deckcard-left"><div class="deck-emblem" style="background:${d.color}">${d.icon}</div><div><h3>${d.name}</h3><p>${cards.length} 枚のカード · ${cards.filter(learned).length} 枚を学習済み</p></div></div><button class="circlearrow" aria-label="${d.name}で学ぶ" data-deck-start="${d.id}">→</button></article>`}
+  function personalPlan(){
+    const steps=course==='ko'?
+      [['1','文法・助詞','文章の骨格を理解','grammar','cards'],['2','動詞・活用','語尾と意味を結び付ける','verbs','quiz'],['3','短文読解','一文を訳して意味を確認','reading','cards']]:
+      [['1','時制と完了形','過去・現在完了を実例で整理','tense','output'],['2','語順・疑問文','英文を正しい順番に組み立てる','wordorder','output'],['3','前置詞・使い分け','迷いやすい表現を使い分ける','prepositions','quiz']];
+    return `<div class="section-head"><h2>あなた向けの学習ルート</h2></div><p class="muted" style="margin:-8px 0 14px">${course==='ko'?'ハングルは読める前提。文字練習は必須にしません。':'日常会話を理解できる前提。時制・語順・前置詞を整理して伝え方を磨きます。'}</p><div class="plan-grid">${steps.map(([num,name,desc,deck,mode])=>`<button class="plan-step" data-track-deck="${deck}" data-track-mode="${mode}"><span class="plan-step-num">${num}</span><strong>${name}</strong><small>${desc}</small><span class="plan-step-arrow">練習する →</span></button>`).join('')}</div>`
+  }
+  function homePage(){const total=allCards().length,done=reviewedToday(),pc=Math.min(100,done/data.goal*100),remaining=allCards().filter(c=>due(c)).length;return `<section class="hero"><div class="hero-content"><div class="hero-label">✦ LET'S KEEP LEARNING</div><h1>${course==='ko'?'読めるハングルを、<br>理解できる韓国語に。':'分かる英語を、<br>使える英語に。'}</h1><p>覚えて、思い出して、少しずつ使える${COURSES[course].name}に。<br>${course==='ko'?'文字の練習はスキップ。助詞・動詞の活用・短文読解から。':'日常会話やSNSの理解を活かし、時制・語順・前置詞のあいまいさをなくそう。'}</p><button class="btn btn-hero" data-action="quick-start">おすすめの練習を始める →</button></div><div class="hero-art"><div class="art-circle">✺</div><div class="art-bubble">${course==='ko'?'안녕하세요!':'Hello!'}</div><div class="art-bubble art-bubble2">こんにちは</div></div></section><div class="grid-stats"><div class="stat-card"><div class="stat-label">今日の学習<span class="stat-icon">↗</span></div><div class="stat-value">${done}<span>/ ${data.goal} 問</span></div></div><div class="stat-card"><div class="stat-label">学習済み<span class="stat-icon">▣</span></div><div class="stat-value">${countLearned()}<span>/ ${total} 枚</span></div></div><div class="stat-card"><div class="stat-label">復習待ち<span class="stat-icon">◷</span></div><div class="stat-value">${remaining}<span>枚</span></div></div></div>${personalPlan()}<div class="section-head"><h2>学習ダッシュボード</h2><button class="textlink" data-nav="stats">詳しく見る →</button></div><div class="two-col"><div class="panel"><div class="panel-head"><h3>今日の目標</h3><span style="font-size:12px;color:var(--primary);font-weight:800">${Math.round(pc)}%</span></div><div class="progress-meta"><span>${done>=data.goal?'目標達成！':'あと '+Math.max(0,data.goal-done)+' 問で達成'}</span><strong>${done} / ${data.goal}</strong></div><div class="progressbar"><div style="width:${pc}%"></div></div><p class="muted" style="margin-bottom:0">${done>=data.goal?'今日は十分がんばりました。続けて学習してもOK。':'続けることが一番大切。少しずつ積み上げましょう。'}</p></div><div class="panel"><div class="panel-head"><h3>この7日間</h3><span style="font-size:12px;color:var(--muted)">${todayActivities().reduce((s,a)=>s+a.count,0)} 問</span></div>${activityChart()}</div></div><div class="section-head"><h2>カテゴリーから学ぶ</h2><button class="textlink" data-nav="library">単語帳を見る →</button></div><div class="deck-grid">${DECKS.filter(d=>d.id!=='custom'&&(course!=='ko'||d.id!=='hangul')).map(deckCard).join('')}</div>`}
+  function startPage(){return `<div class="page-title"><h1>今日は何を学ぶ？</h1><p>カードで記憶、クイズで確認、入力で定着。好きな方法を選べます。</p></div><div class="section-head"><h2>学習モードを選択</h2></div><div class="learning-setup">${[['cards','フラッシュカード','単語をめくって確認し、理解度に合わせて次の復習日を調整。','▤'],['output','思い出して話す','日本語から英語・韓国語を自分で考えてから答えを確認。','↗'],['quiz','4択クイズ','表示された${COURSES[course].name}に対応する日本語を選んで覚える。','◉'],['typing','タイピング','日本語を見て、学習中の言語で入力して答える。','⌨']].map(([id,name,desc,icon])=>`<button class="setup-card ${selectedMode===id?'selected':''}" data-mode="${id}"><span class="setup-icon">${icon}</span><h3>${name}</h3><p>${desc}</p>${selectedMode===id?'<span class="selected-mark">✓</span>':''}</button>`).join('')}</div><div class="setup-bottom"><div class="form-group"><label for="study-deck">学習するカテゴリー</label><select id="study-deck" class="form-select">${[['all','すべてのカテゴリー'],...DECKS.map(d=>[d.id,d.name])].map(([id,name])=>`<option value="${id}" ${selectedDeck===id?'selected':''}>${name}</option>`).join('')}</select></div><button class="btn" data-action="start-session">${selectedMode==='cards'?'カードで学ぶ':selectedMode==='output'?'思い出す練習を始める':selectedMode==='quiz'?'クイズを始める':'入力練習を始める'} →</button></div><div class="panel"><h3>${course==='ko'?'韓国語の学習について':'復習の仕組み'}</h3><p class="muted" style="margin-bottom:0">${course==='ko'?'ハングルが読めるなら『文法・助詞』から開始。ハングル入門は任意で、タイピングには韓国語キーボードが必要です。':''}覚えているカードは数日後、忘れたカードは翌日に再登場します。復習が必要なカードを優先し、未学習カードも出題します。</p></div>`}
+  function pickSession(mode,deck){const cards=selectDeckCards(deck),rev=cards.filter(due).sort((a,b)=>getProgress(a.id).due.localeCompare(getProgress(b.id).due)),unseen=cards.filter(c=>!learned(c)),others=cards.filter(c=>learned(c)&&!due(c)).sort((a,b)=>getProgress(a.id).due.localeCompare(getProgress(b.id).due));let list=[...rev,...unseen].slice(0,10);if(mode!=='cards'&&list.length<10)list=list.concat(others.slice(0,10-list.length));return list}
+  function begin(mode=selectedMode,deck=selectedDeck){const cards=pickSession(mode,deck);if(!cards.length){toast('今のカテゴリーには出題できるカードがありません。');go('learn');return}selectedMode=mode;selectedDeck=deck;session={mode,deck,ids:cards.map(c=>c.id),index:0,flipped:false,answered:false,selection:-1,answer:'',correct:0};view='learn';render();window.scrollTo({top:0,behavior:'instant'})}
+  function currentCard(){return allCards().find(c=>c.id===session?.ids[session.index])}
+  function studyPage(){if(!session)return startPage();if(session.index>=session.ids.length)return completePage();const c=currentCard(),s=session,percent=Math.round(100*s.index/s.ids.length),code=COURSES[course].code;if(!c)return '<div class="empty">カードを表示できません。</div>';let central='';
+    if(s.mode==='cards'||s.mode==='output'){central=`<div class="flashcard" role="group" aria-label="フラッシュカード"><span class="cardtop">${esc(DECKS.find(d=>d.id===c.deck)?.name||'MY WORDS')} · ${s.mode==='output'?'JA → '+code:code+' → JA'}</span><button class="speak" data-action="speak" title="発音する" aria-label="${COURSES[course].name}を読み上げる">♪</button><div class="word">${esc(s.mode==='output'?c.back:c.front)}</div><div class="phonetic">${s.flipped?'答えを確認しました':s.mode==='output'?'学習中の言語で声に出してみよう':'意味を思い出してから答えを見る'}</div>${s.flipped?`<div class="translation">${esc(s.mode==='output'?c.front:c.back)}</div>${c.example?`<div class="example">${esc(c.example)}</div>`:''}`:''}</div>${s.flipped?`<p class="study-hint">どのくらい覚えていましたか？<span class="shortcut"> （1〜4キーでも選択可）</span></p><div class="answer-buttons">${[['again','もう一度','明日'],['hard','難しい','1〜2日'],['good','覚えた','間隔を伸ばす'],['easy','簡単','長めに復習']].map(([id,name,subtitle])=>`<button data-rate="${id}">${name}<span>${subtitle}</span></button>`).join('')}</div>`:`<button class="btn full" style="margin-top:15px" data-action="flip">答えを見る <span class="shortcut" style="color:inherit">Space</span></button>`}`}
+    else if(s.mode==='quiz'){
+      const opts=quizOptions(c);central=`<div class="flashcard" style="min-height:232px"><span class="cardtop">4択 · ${code} → JA</span><button class="speak" data-action="speak" aria-label="${COURSES[course].name}を読み上げる">♪</button><div class="word">${esc(c.front)}</div><div class="phonetic">正しい意味を選択してください</div></div><div class="quiz-options">${opts.map((x,i)=>`<button class="quiz-option ${s.answered?(x===c.back?'correct':s.selection===i?'incorrect':''):''}" data-choice="${i}" ${s.answered?'disabled':''}>${esc(x)}</button>`).join('')}</div>${s.answered?`<div class="feedback ${s.answer==='correct'?'':'error'}">${s.answer==='correct'?'✓ 正解です！':'答え：'+esc(c.back)}${c.example?`<br><span style="color:#72778a">${esc(c.example)}</span>`:''}</div><button class="btn full" data-action="next" style="margin-top:14px">次の問題 →</button>`:''}`}
+    else{central=`<div class="flashcard" style="min-height:245px"><span class="cardtop">タイピング · JA → ${code}</span><div class="word" style="font-size:clamp(20px,4vw,33px)">${esc(c.back)}</div><div class="phonetic">対応する${COURSES[course].name}を入力してください</div></div><form id="typing-form" class="type-answer"><input id="answer-input" class="form-input" aria-label="${COURSES[course].name}の答え" placeholder="${COURSES[course].name}で入力..." autocomplete="off" autocapitalize="off" spellcheck="false" ${s.answered?'disabled':''} value="${esc(s.typed||'')}"/><button class="btn" type="submit" ${s.answered?'disabled':''}>答える</button></form>${s.answered?`<div class="feedback ${s.answer==='correct'?'':'error'}">${s.answer==='correct'?'✓ 正解です！':'正解：'+esc(c.front)}${c.example?`<br><span style="color:#72778a">${esc(c.example)}</span>`:''}</div><button class="btn full" data-action="next" style="margin-top:14px">次の問題 →</button>`:''}`}
+    return `<div class="page-title"><h1>${s.mode==='cards'?'フラッシュカード':s.mode==='output'?'思い出して話す':s.mode==='quiz'?'4択クイズ':'タイピング練習'}</h1><p>${COURSES[course].name}コース · 答えを思い出してから進みましょう。</p></div><div class="study-layout"><div class="study-top"><span>${s.index+1} / ${s.ids.length} 問</span><button class="textlink" data-action="leave">学習を終了 ×</button></div><div class="study-progress"><div style="width:${percent}%"></div></div>${central}</div>`}
+  function quizOptions(card){const cards=allCards().filter(c=>c.id!==card.id&&c.back!==card.back);let arr=cards.slice().sort((a,b)=>hash(card.id+a.id)-hash(card.id+b.id)).slice(0,3).map(c=>c.back);arr.push(card.back);return arr.sort((a,b)=>hash(card.id+'!'+a)-hash(card.id+'!'+b))}
+  function hash(s){let h=2166136261;for(let i=0;i<s.length;i++)h=Math.imul(h^s.charCodeAt(i),16777619);return h>>>0}
+  function normalize(s){return s.normalize('NFKC').trim().toLowerCase().replace(/[’‘]/g,"'").replace(/[.!?。！？,，]+$/,'').replace(/\s+/g,' ')}
+  function assess(id,rating){const p={...getProgress(id)};const oldInterval=p.interval;const oldN=p.n||0;if(rating==='again'){p.n=oldN+1;p.interval=1;p.ease=Math.max(1.3,(p.ease||2.5)-.2);p.wrong=(p.wrong||0)+1}else if(rating==='hard'){p.n=oldN+1;p.interval=Math.max(1,Math.round(oldInterval?oldInterval*1.2:2));p.ease=Math.max(1.3,(p.ease||2.5)-.15);p.correct=(p.correct||0)+1}else if(rating==='good'){p.n=oldN+1;p.interval=oldInterval?Math.max(oldInterval+1,Math.round(oldInterval*(p.ease||2.5))):3;p.correct=(p.correct||0)+1}else{p.n=oldN+1;p.interval=oldInterval?Math.max(oldInterval+2,Math.round(oldInterval*(p.ease||2.5)*1.3)):5;p.ease=Math.min(3.2,(p.ease||2.5)+.1);p.correct=(p.correct||0)+1}p.due=dateOffset(today(),Math.min(365,p.interval));p.last=today();data.progress[id]=p;data.events.push({date:today(),id,correct:rating!=='again',mode:session?.mode||'cards',lang:course});if(data.events.length>20000)data.events=data.events.slice(-20000);persist()}
+  function answerCard(rate){if(!session?.flipped)return;assess(currentCard().id,rate);session.correct+=rate!=='again'?1:0;session.index++;session.flipped=false;render()}
+  function selectAnswer(i){if(!session||session.answered)return;const c=currentCard(),opts=quizOptions(c),right=opts[i]===c.back;session.selection=i;session.answered=true;session.answer=right?'correct':'incorrect';session.correct+=right?1:0;assess(c.id,right?'good':'again');render()}
+  function typeAnswer(){if(!session||session.answered)return;const el=document.getElementById('answer-input');let typed=el?.value||'';if(!typed.trim()){toast(COURSES[course].name+'を入力してください');return}const c=currentCard(),right=normalize(typed)===normalize(c.front);session.typed=typed;session.answered=true;session.answer=right?'correct':'incorrect';session.correct+=right?1:0;assess(c.id,right?'good':'again');render()}
+  function next(){if(!session?.answered)return;session.index++;session.answered=false;session.selection=-1;session.answer='';session.typed='';render();if(session?.mode==='typing')document.getElementById('answer-input')?.focus()}
+  function completePage(){const n=session.ids.length;return `<div class="complete"><div class="complete-symbol">✦</div><h2>おつかれさまでした！</h2><p>今回の${n}問が完了しました。<br>${['cards','output'].includes(session.mode)?'「覚えた」以上の評価':'正解'}：<strong>${session.correct} / ${n}</strong><br>記録は自動的に保存されています。</p><div class="complete-actions"><button class="btn" data-action="restart">もう一度学ぶ</button><button class="btn btn-white" data-nav="home">ホームへ戻る</button></div></div>`}
+  function libraryPage(){const cards=allCards().filter(c=>(libraryDeck==='all'||libraryDeck===c.deck)&&(`${c.front} ${c.back} ${c.example||''}`.toLowerCase().includes(search.toLowerCase())));const visible=cards.slice(0,250);return `<div class="page-title"><h1>あなたの単語帳</h1><p>すべてのカードを確認できます。自分の言葉も追加して、学びたい内容を増やしましょう。</p></div><div class="page-actions"><div style="display:flex;gap:10px;flex:1;min-width:230px"><input class="form-input" id="library-search" placeholder="${COURSES[course].name}・日本語から検索" value="${esc(search)}" aria-label="単語を検索"/><select class="form-select" style="max-width:190px" id="library-filter"><option value="all">すべて</option>${DECKS.map(d=>`<option value="${d.id}" ${libraryDeck===d.id?'selected':''}>${d.name}</option>`).join('')}</select></div><button class="btn" data-action="add-card">＋ 単語を追加</button></div><div class="muted" style="margin-bottom:12px">${cards.length} 枚のカード</div><div class="library-list">${visible.length?visible.map(c=>`<article class="library-row"><div style="min-width:0"><div class="library-word">${esc(c.front)}</div><div class="library-sub">${esc(c.back)}${c.example?`<br>${esc(c.example)}`:''}</div></div><div class="library-right"><span class="tag ${due(c)?'due':learned(c)?'ok':''}">${due(c)?'復習待ち':learned(c)?'学習済み':'未学習'}</span><button class="icon-button" data-speak="${esc(c.id)}" title="読み上げ" aria-label="${esc(c.front)} を読み上げ">♪</button>${c.deck==='custom'?`<button class="icon-button" data-delete="${esc(c.id)}" title="削除" aria-label="${esc(c.front)} を削除">×</button>`:''}</div></article>`).join(''):'<div class="empty">該当するカードがありません。</div>'}</div>`}
+  function statsPage(){const total=allCards().length,mastered=allCards().filter(c=>getProgress(c.id).interval>=7).length,learn=countLearned(),rate=total?Math.round(learn/total*100):0;const top=DECKS.map(d=>{const cs=selectDeckCards(d.id);return {name:d.name,total:cs.length,done:cs.filter(learned).length}}).filter(d=>d.total);return `<div class="page-title"><h1>学習の記録</h1><p>小さな積み重ねを数字で確認。がんばりはこのブラウザに保存されます。</p></div><div class="grid-stats"><div class="stat-card"><div class="stat-label">累計回答数</div><div class="stat-value">${courseEvents().length}<span>問</span></div></div><div class="stat-card"><div class="stat-label">正答・習得評価率</div><div class="stat-value">${answeredRatio()}<span>%</span></div></div><div class="stat-card"><div class="stat-label">連続学習</div><div class="stat-value">${streak()}<span>日</span></div></div></div><div class="section-head"><h2>学習分析</h2></div><div class="stats-grid"><section class="panel"><div class="panel-head"><h3>単語の学習状況</h3></div><div class="mastery"><div class="donut" style="--pct:${rate}%" data-label="${rate}%"></div><div><div class="big-number">${learn} <span style="font-size:13px;color:var(--muted);font-weight:600">/ ${total} 枚</span></div><p class="muted">学習済みカード<br>うち復習間隔7日以上：${mastered} 枚</p></div></div></section><section class="panel"><div class="panel-head"><h3>直近7日間の学習</h3><span class="muted">${todayActivities().reduce((s,a)=>s+a.count,0)} 問</span></div>${activityChart()}</section></div><div class="section-head"><h2>カテゴリー別の進捗</h2></div><section class="panel">${top.length?top.map((d,i)=>`<div style="margin:${i===0?'0':'18px'} 0 0"><div class="progress-meta"><strong>${d.name}</strong><span>${d.done} / ${d.total} 枚</span></div><div class="progressbar"><div style="width:${d.done/d.total*100}%"></div></div></div>`).join(''):'<div class="muted">カードがありません。</div>'}</section><p class="muted" style="margin-top:16px">※ 正答率にはフラッシュカードの自己評価も含まれます。学習進捗は学力の正式な測定ではありません。</p>`}
+  function settingsPage(){return `<div class="page-title"><h1>設定とデータ管理</h1><p>学習目標の変更、データのバックアップ・復元ができます。</p></div><div class="section-head"><h2>学習設定</h2></div><div class="settings-grid"><section class="panel"><h3>1日の学習目標</h3><p class="muted">1日に何問取り組むか設定します。</p><div class="form-group" style="max-width:210px"><label for="daily-goal">1日の目標回答数</label><select class="form-select" id="daily-goal">${[5,10,15,20,30,50,100].map(n=>`<option value="${n}" ${data.goal===n?'selected':''}>${n} 問</option>`).join('')}</select></div></section><section class="panel"><h3>音声読み上げ</h3><p class="muted">端末やブラウザが対応していれば、${COURSES[course].name}の発音を再生します。音声機能は端末側の仕組みを利用するため、声の種類やオフライン利用可否は環境によって異なります。</p><button class="btn btn-soft small" data-action="test-speech">${COURSES[course].name}の音声をテスト ♪</button></section></div><div class="section-head"><h2>バックアップと復元</h2></div><div class="settings-grid"><section class="panel"><h3>学習データを保存</h3><p class="muted">単語の追加、学習状況、履歴をJSONファイルに書き出します。別の端末に移すときに便利です。</p><button class="btn btn-white small" data-action="export-data">↓ JSONをダウンロード</button></section><section class="panel"><h3>バックアップから復元</h3><p class="muted">保存したJSONファイルを選択してデータを復元します。現在の記録は上書きされます。</p><button class="btn btn-white small" data-action="import-data">↑ JSONを読み込む</button><input id="import-file" type="file" accept=".json,application/json" hidden /></section></div><div class="section-head"><h2>その他</h2></div><section class="panel"><h3>データの保存先</h3><p class="muted">サーバーへの通信・アカウント登録はありません。データはこのブラウザ内（localStorage）に保存されます。プライベートブラウズ、キャッシュ削除、別端末への移動で消える場合があるため、必要に応じてバックアップしてください。</p><button class="btn btn-danger small" data-action="reset-data">すべての学習データを初期化</button></section>`}
+  function modalPage(){if(modal==='add')return `<div class="modal-backdrop" data-backdrop="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-head"><h2 id="modal-title">新しい単語を追加</h2><button class="icon-button" data-action="close-modal" aria-label="閉じる">×</button></div><form id="add-form"><div class="form-group"><label for="custom-front">${COURSES[course].name}・フレーズ *</label><input maxlength="120" required id="custom-front" class="form-input" placeholder="${course==='ko'?'例: 안녕하세요':'例: look forward to'}" /></div><div class="form-group"><label for="custom-back">日本語の意味 *</label><input maxlength="180" required id="custom-back" class="form-input" placeholder="${course==='ko'?'例: こんにちは':'例: 〜を楽しみにする'}" /></div><div class="form-group"><label for="custom-example">例文（任意）</label><input maxlength="250" id="custom-example" class="form-input" placeholder="${course==='ko'?'例: 안녕하세요. 반갑습니다.':'例: I look forward to seeing you.'}" /></div><div class="modal-actions"><button type="button" class="btn btn-white" data-action="close-modal">キャンセル</button><button class="btn" type="submit">追加する</button></div></form></div></div>`;if(modal==='reset')return `<div class="modal-backdrop" data-backdrop="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-head"><h2 id="modal-title">学習データを初期化しますか？</h2><button class="icon-button" data-action="close-modal" aria-label="閉じる">×</button></div><p class="muted">英語・韓国語の追加カード、学習進捗、回答履歴がすべて削除されます。元に戻せません。先にバックアップすることをおすすめします。</p><div class="modal-actions"><button class="btn btn-white" data-action="close-modal">キャンセル</button><button class="btn btn-danger" data-action="confirm-reset">初期化する</button></div></div></div>`;return ''}
+  function render(){const content=view==='home'?homePage():view==='learn'?studyPage():view==='library'?libraryPage():view==='stats'?statsPage():settingsPage();document.getElementById('app').innerHTML=shell(content)+(modal?modalPage():'');if(session?.mode==='typing'&&session.index<session.ids.length&&!session.answered)document.getElementById('answer-input')?.focus()}
+  function speak(txt){if(!('speechSynthesis' in window)){toast('このブラウザは音声読み上げに対応していません。');return}try{window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(txt);u.lang=COURSES[course].lang;u.rate=course==='ko'?.83:.86;window.speechSynthesis.speak(u)}catch(e){toast('音声を再生できませんでした。')}}
+  function exportData(){const blob=new Blob([JSON.stringify({app:'lingo-atelier',...data},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='lingo-atelier-backup-'+today()+'.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+  async function importData(file){if(!file||file.size>5*1024*1024){toast('5MB以下のJSONファイルを選んでください。');return}let raw;try{raw=JSON.parse(await file.text())}catch(e){toast('JSONファイルの形式が正しくありません。');return}if(raw.app!=='lingo-atelier'||![1,2].includes(raw.version)||!raw.progress||typeof raw.progress!=='object'||Array.isArray(raw.progress)||!Array.isArray(raw.custom)||!Array.isArray(raw.events)||raw.custom.length>5000||raw.events.length>20000){toast('このアプリのバックアップではありません。');return}if(!confirm('現在のデータをバックアップの内容で上書きします。よろしいですか？'))return;const cleanedCustom=raw.custom.filter(c=>c&&typeof c.id==='string'&&typeof c.front==='string'&&typeof c.back==='string').map(c=>({id:c.id.slice(0,100),deck:'custom',lang:c.lang==='ko'?'ko':'en',front:c.front.slice(0,120),back:c.back.slice(0,180),example:String(c.example||'').slice(0,250)}));const safeProgress={};for(const [id,p] of Object.entries(raw.progress).slice(0,10000)){if(typeof id!=='string'||!p||typeof p!=='object')continue;safeProgress[id]={n:Math.max(0,Math.min(10000,Number(p.n)||0)),interval:Math.max(0,Math.min(365,Number(p.interval)||0)),ease:Math.max(1.3,Math.min(3.2,Number(p.ease)||2.5)),due:/^\d{4}-\d{2}-\d{2}$/.test(String(p.due))?p.due:today(),last:String(p.last||''),correct:Math.max(0,Number(p.correct)||0),wrong:Math.max(0,Number(p.wrong)||0)}}data={version:2,course:raw.course==='ko'?'ko':'en',goal:Math.max(1,Math.min(100,Number(raw.goal)||10)),progress:safeProgress,custom:cleanedCustom,events:raw.events.filter(e=>e&&/^\d{4}-\d{2}-\d{2}$/.test(String(e.date))&&typeof e.id==='string').map(e=>({date:e.date,id:e.id,lang:e.lang==='ko'?'ko':'en',correct:!!e.correct,mode:String(e.mode||'cards')}))};course=data.course;DECKS=course==='ko'?DECKS_KO:DECKS_EN;selectedDeck='all';libraryDeck='all';persist();go('home');toast('学習データを復元しました')}
+  document.addEventListener('click',e=>{const el=e.target.closest('button,[data-backdrop]');if(!el)return;if(el.dataset.backdrop==='true'&&e.target===el){modal=null;render();return}if(el.dataset.course){switchCourse(el.dataset.course);return}if(el.dataset.nav){go(el.dataset.nav);return}if(el.dataset.deckStart){selectedDeck=el.dataset.deckStart;selectedMode='cards';begin('cards',selectedDeck);return}if(el.dataset.trackDeck){begin(el.dataset.trackMode,el.dataset.trackDeck);return}if(el.dataset.mode){selectedMode=el.dataset.mode;render();return}if(el.dataset.rate){answerCard(el.dataset.rate);return}if(el.dataset.choice){selectAnswer(Number(el.dataset.choice));return}if(el.dataset.speak){const c=allCards().find(c=>c.id===el.dataset.speak);if(c)speak(c.front);return}if(el.dataset.delete){if(confirm('この単語を削除しますか？')){data.custom=data.custom.filter(c=>c.id!==el.dataset.delete);delete data.progress[el.dataset.delete];persist();render();toast('単語を削除しました')}return}const action=el.dataset.action;switch(action){case 'quick-start':begin('output',course==='ko'?'grammar':'tense');break;case 'start-session':begin();break;case 'flip':if(session){session.flipped=true;render()}break;case 'next':next();break;case 'speak':if(session)speak(currentCard().front);break;case 'leave':go('learn');break;case 'restart':begin(session.mode,session.deck);break;case 'add-card':modal='add';render();document.getElementById('custom-front')?.focus();break;case 'close-modal':modal=null;render();break;case 'test-speech':speak(course==='ko'?'안녕하세요. 한국어 공부를 시작해요.':'Hello! Welcome to your English learning journey.');break;case 'export-data':exportData();break;case 'import-data':document.getElementById('import-file')?.click();break;case 'reset-data':modal='reset';render();break;case 'confirm-reset':data=blank();persist();go('home');toast('学習データを初期化しました');break}});
+  document.addEventListener('change',e=>{if(e.target.id==='study-deck'){selectedDeck=e.target.value}else if(e.target.id==='library-filter'){libraryDeck=e.target.value;const active=document.activeElement;render();if(active?.id==='library-filter')document.getElementById('library-filter')?.focus()}else if(e.target.id==='daily-goal'){data.goal=Number(e.target.value);persist();toast('1日の目標を変更しました')}else if(e.target.id==='import-file'){importData(e.target.files?.[0]);e.target.value=''}});
+  document.addEventListener('input',e=>{if(e.target.id==='library-search'){const sel=e.target.selectionStart;search=e.target.value;render();const box=document.getElementById('library-search');if(box){box.focus();box.setSelectionRange(sel,sel)}}});
+  document.addEventListener('submit',e=>{if(e.target.id==='typing-form'){e.preventDefault();typeAnswer()}if(e.target.id==='add-form'){e.preventDefault();const front=document.getElementById('custom-front').value.trim(),back=document.getElementById('custom-back').value.trim(),example=document.getElementById('custom-example').value.trim();if(!front||!back)return;if(data.custom.length>=5000){toast('登録できる単語は最大5000件です');return}const id=course+'-custom-'+Date.now()+'-'+Math.random().toString(36).slice(2,8);data.custom.push({id,deck:'custom',lang:course,front,back,example});persist();modal=null;libraryDeck='custom';search='';go('library');toast('単語を追加しました')}});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal){modal=null;render();return}if(e.target.closest('input,textarea,select,button,[contenteditable]')||modal||!session||view!=='learn')return;if(session.mode==='cards'){if(e.code==='Space'&&!session.flipped){e.preventDefault();session.flipped=true;render()}else if(session.flipped&&['1','2','3','4'].includes(e.key)){answerCard(['again','hard','good','easy'][Number(e.key)-1])}}else if(session.answered&&e.key==='Enter'){e.preventDefault();next()}});
+  render();
+})();
+</script>
+<script>
+// HTTPS / localhost でのみ PWA のオフラインキャッシュを登録。
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js', { scope: './' })
+      .catch((error) => console.warn('オフラインキャッシュの登録に失敗:', error));
+  });
+}
+</script>
+</body>
+</html>
